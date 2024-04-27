@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { AnimatePresence, motion } from "framer-motion";
 
 // EditTaskModal component for editing task details
 const EditTaskModal = ({ todo, onClose, onSave }) => {
@@ -32,8 +33,13 @@ const EditTaskModal = ({ todo, onClose, onSave }) => {
 
   return (
     // Modal backdrop and container
+    <AnimatePresence>
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-      <div className="bg-white p-8 rounded-lg w-[48rem] max-w-3xl">
+      <motion.div 
+         initial={{scale:0}}
+         animate={{scale:1}}
+         exit={{scale:0}}
+         className="bg-white p-8 rounded-lg w-[48rem] max-w-3xl">
         <h2 className="text-xl font-semibold mb-4">Edit Task</h2>
         {/* Formik form */}
         <Formik
@@ -87,8 +93,10 @@ const EditTaskModal = ({ todo, onClose, onSave }) => {
             </div>
           </Form>
         </Formik>
-      </div>
+      </motion.div>
+
     </div>
+    </AnimatePresence>
   );
 };
 

@@ -1,7 +1,10 @@
 import React from 'react';
+import { AnimatePresence, motion } from "framer-motion";
+import { DiVisualstudio } from 'react-icons/di';
 
 const LogoutConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
   return (
+    <AnimatePresence>
     <div
       className={`fixed inset-0 ${
         isOpen ? 'block' : 'hidden'
@@ -23,7 +26,7 @@ const LogoutConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
           &#8203;
         </span>
 
-        <div
+        <div 
           className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
           role="dialog"
           aria-modal="true"
@@ -106,6 +109,7 @@ const LogoutConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
         </div>
       </div>
     </div>
+    </AnimatePresence>
   );
 };
 

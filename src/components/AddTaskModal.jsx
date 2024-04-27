@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
+import { AnimatePresence, motion } from "framer-motion";
 
 // AddTaskModal component for adding new tasks
 const AddTaskModal = ({ onClose, onSave }) => {
@@ -39,8 +40,13 @@ const AddTaskModal = ({ onClose, onSave }) => {
 
   return (
     // Modal backdrop and container
+    <AnimatePresence>
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-      <div className="bg-white p-8 rounded-lg w-[48rem] max-w-3xl">
+      <motion.div 
+         initial={{scale:0}}
+         animate={{scale:1}}
+         exit={{scale:0}}
+         className="bg-white p-8 rounded-lg w-[48rem] max-w-3xl">
         <h2 className="text-xl font-semibold mb-4">Add Task</h2>
         {/* Formik form */}
         <Formik
@@ -95,8 +101,9 @@ const AddTaskModal = ({ onClose, onSave }) => {
             </div>
           </Form>
         </Formik>
-      </div>
+      </motion.div>
     </div>
+    </AnimatePresence>
   );
 };
 
