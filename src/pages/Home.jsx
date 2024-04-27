@@ -110,6 +110,13 @@ const Home = () => {
 
     return () => clearInterval(intervalId);
   }, [filteredTodos]);
+if(user===null||user===undefined)
+return(
+  <div className="w-full h-screen grid place-content-center text-9xl text-gray-100 bg-white animate-pulse">
+    Loading
+  </div>
+)
+
   return (
     <>
       <Navbar />
