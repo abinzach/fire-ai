@@ -95,27 +95,26 @@ const Home = () => {
     (todo) => todo.status === "completed"
   );
 
-   // Notification for pending tasks
+  // Notification for pending tasks
   useEffect(() => {
     const intervalId = setInterval(() => {
       const pendingTodos = filteredTodos.filter(
         (todo) => todo.status === "pending"
       );
       if (pendingTodos.length > 0) {
-        toast.info(
-          `You have ${pendingTodos.length} pending todos.`
-        );
+        toast.info(`You have ${pendingTodos.length} pending todos.`);
       }
     }, 20000);
 
     return () => clearInterval(intervalId);
   }, [filteredTodos]);
-if(user===null||user===undefined)
-return(
-  <div className="w-full h-screen grid place-content-center text-9xl text-gray-100 bg-white animate-pulse">
-    Loading
-  </div>
-)
+
+  if (user.email === null || user.email === undefined)
+    return (
+      <div className="w-full h-screen grid place-content-center text-9xl text-gray-100 bg-white animate-pulse">
+        Loading
+      </div>
+    );
 
   return (
     <>
